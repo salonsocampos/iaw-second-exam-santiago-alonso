@@ -25,6 +25,7 @@ export const getAllItemsHandler = async (event) => {
     var params = {
         TableName : tableName
     };
+    
 
     try {
         const data = await ddbDocClient.send(new ScanCommand(params));
@@ -37,7 +38,7 @@ export const getAllItemsHandler = async (event) => {
         statusCode: 200,
         body: JSON.stringify(items)
     };
-
+    
     // All log statements are written to CloudWatch
     console.info(`response from: ${event.path} statusCode: ${response.statusCode} body: ${response.body}`);
     return response;
